@@ -25,7 +25,7 @@ class StatisticsService extends Service {
     const db = this.ctx.model
     const {sql} = this.ctx.helper
     let result = await db.query(sql`
-      SELECT header.timestamp - prev_header.timestamp AS blockInterval, COUNT(*) AS count FROM header
+      SELECT cast(header.timestamp AS signed) - cast(prev_header.timestamp AS signed) AS blockInterval, COUNT(*) AS count FROM header
       INNER JOIN header prev_header ON prev_header.height = header.height - 1
       WHERE header.height > 5001
       GROUP BY blockInterval
