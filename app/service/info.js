@@ -21,7 +21,7 @@ class InfoService extends Service {
     if (height <= 10) {
       return height * 80200
     }
-    if (height <= 10 && height <= this.app.chain.lastPoWBlockHeight) {
+    if (height >= 11 && height <= this.app.chain.lastPoWBlockHeight) {
       return height * 200
     } else {
       let supply = 1e8
