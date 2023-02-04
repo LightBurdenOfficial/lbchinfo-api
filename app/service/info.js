@@ -18,8 +18,11 @@ class InfoService extends Service {
 
   getTotalSupply() {
     let height = this.app.blockchainInfo.tip.height
-    if (height <= this.app.chain.lastPoWBlockHeight) {
-      return height * 20000
+    if (height <= 10) {
+      return height * 80200
+    }
+    if (height <= 10 && height <= this.app.chain.lastPoWBlockHeight) {
+      return height * 200
     } else {
       let supply = 1e8
       let reward = 4
